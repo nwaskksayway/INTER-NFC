@@ -224,7 +224,7 @@
 
 <script>
     function alterarLimite() {
-        const novo = prompt("Digite o novo valor do limite (apenas números):", "25500");
+        const novo = prompt("Digite o novo valor do limite (apenas números):", "2550");
         if (novo !== null && !isNaN(novo)) {
             const formatado = parseFloat(novo).toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
             document.getElementById('display-limite').innerText = formatado;
