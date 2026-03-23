@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interface de Limite</title>
+    <style>
+        :root {
+            --inter-orange: #FF7A00;
+            --bg-gray: #F5F6FA;
+            --text-dark: #444;
+            --text-light: #888;
+        }
+
+        body {
+            font-family: "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background-color: var(--bg-gray);
+            margin: 0;
+            display: flex;
+            justify-content: center;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 400px;
+            background-color: var(--bg-gray);
+            min-height: 100vh;
+        }
+
+        /* Header */
+        .header {
+            background-color: var(--inter-orange);
+            height: 120px;
+            padding: 20px;
+            color: white;
+            display: flex;
+            align-items: center;
+            position: relative;
+        }
+
+        .back-button {
+            width: 35px;
+            height: 35px;
+            background: white;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            border: none;
+        }
+
+        .header h1 {
+            flex-grow: 1;
+            text-align: center;
+            font-size: 20px;
+            margin-right: 35px;
+        }
+
+        /* Card de Limite */
+        .limit-card {
+            background: white;
+            margin: -40px 15px 20px 15px;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            padding: 20px;
+            text-align: center;
+        }
+
+        .card-inner {
+            border: 1px solid #eee;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+
+        .label-total {
+            color: var(--text-light);
+            font-size: 14px;
+            margin-bottom: 5px;
+        }
+
+        .value-main {
+            font-size: 24px;
+            font-weight: bold;
+            color: #555;
+            margin: 10px 0;
+        }
+
+        .auto-adjust {
+            color: var(--text-light);
+            font-size: 12px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .check-icon { color: #2ecc71; }
+
+        .progress-bar {
+            height: 12px;
+            background: #e0e0e0;
+            border-radius: 6px;
+            margin: 20px 0;
+        }
+
+        .stats {
+            display: flex;
+            justify-content: space-between;
+            font-size: 13px;
+        }
+
+        .stat-label { color: var(--text-light); margin-bottom: 5px; }
+        .stat-val { color: #555; font-weight: 500; }
+
+        .btn-adjust {
+            width: 100%;
+            padding: 15px;
+            background: none;
+            border: none;
+            border-top: 1px solid #eee;
+            color: var(--inter-orange);
+            font-weight: bold;
+            text-transform: uppercase;
+            cursor: pointer;
+            letter-spacing: 1px;
+            margin-top: 10px;
+        }
+
+        .btn-adjust:active {
+            background-color: #fffaf5;
+        }
+
+        /* Área do Anúncio Adaptada */
+        .ad-container {
+            margin: 0 15px;
+            border-radius: 12px;
+            overflow: hidden;
+            cursor: pointer;
+        }
+
+        .ad-image {
+            width: 100%;
+            display: block;
+            border-radius: 12px;
+            transition: transform 0.2s;
+        }
+
+        .ad-image:active {
+            transform: scale(0.98);
+        }
+
+        .placeholder-ad {
+            width: 100%;
+            height: 180px;
+            background: var(--inter-orange);
+            color: white;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="header">
+        <button class="back-button" onclick="history.back()">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#FF7A00" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
+        </button>
+        <h1>Limite</h1>
+    </div>
+
+    <div class="limit-card">
+        <div class="card-inner">
+            <div class="label-total">Limite total</div>
+            <div class="value-main" id="display-limite">R$ 25.500,00</div>
+            <div class="auto-adjust">
+                <span class="check-icon">✓</span> Ajuste automático Indisponivel <!DOCTYPE html>
+<html>
+<head>
+    <style>
+        .valor-negativo {
+            color: #E53935; /* Vermelho padrão de alertas/financeiro */
+            font-family: 'Segoe UI', Roboto, sans-serif;
+            font-weight: bold;
+            font-size: 18px;
+        }
+    </style>
+</head>
+<body>
+
+    <span class="valor-negativo">-R$ 230,00</span>
+
+</body>
+</html>
+
+            </div>
+            
+            <div class="progress-bar"></div>
+
+            <div class="stats">
+                <div style="text-align: left;">
+                    <div class="stat-label">Utilizado</div>
+                    <div class="stat-val">R$ 520,00</div>
+                </div>
+                <div style="text-align: right;">
+                    <div class="stat-label">Fechamento a Ser pago</div>
+                    <div class="stat-val" id="display-disponivel">R$ 25.500,00</div>
+                </div>
+            </div>
+        </div>
+
+        <button class="btn-adjust" onclick="alterarLimite()">Ajustar Limite</button>
+    </div>
+
+    <div class="ad-container" onclick="alert('Redirecionando para oferta...')">
+        <img src="https://www.mobills.com.br/blog/wp-content/uploads/2021/07/Template-Cartao-327x206-1.png" alt="Banner Aumente seu limite" class="ad-image">
+    </div>
+</div>
+
+<script>
+    function alterarLimite() {
+        const novo = prompt("Digite o novo valor do limite (apenas números):", "25500");
+        if (novo !== null && !isNaN(novo)) {
+            const formatado = parseFloat(novo).toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
+            document.getElementById('display-limite').innerText = formatado;
+            document.getElementById('display-disponivel').innerText = formatado;
+        }
+    }
+</script>
+
+</body>
+</html>
